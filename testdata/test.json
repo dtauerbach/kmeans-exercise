@@ -1,0 +1,19 @@
+[
+  {
+    "category": "Merchandise & Supplies",
+    "merchant_phone": null,
+    "name": "BJ'S 011",
+    "merchant_city": "EAST SETAUKET",
+    "merchant_state": "NY",
+    "coordinates": {
+      "lat": 40.9027901845628,
+      "lng": -73.0782184632683
+    },
+    "merchant_zip": "11733",
+    "merchant_address": "4000 NESCONSET HWY",
+    "amount": 50,
+    "date": "2013-10-28",
+    "merchant_country": "UNITED STATES",
+    "type": null
+  }
+]
