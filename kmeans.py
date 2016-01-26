@@ -4,6 +4,7 @@
 
 import json
 import math
+import random
 
 def kmeans(k_factor, json_file):
     """Takes in a json file and k and outputs k clusters after llyod's algo
@@ -22,13 +23,18 @@ def get_features(parsed):
 
 def apply_lloyd(points, k):
     centers = set_initial_centers(points, k)
+    clusters = []
+    i = 0
     while True:
-        assign_points_to_clusters(points, centers)
-        update_centers()
-        # TODO check that set of points do not change
-        raise ValueError, "Not Implemented Yet"
+        new_clusters = assign_points_to_clusters(points, centers)
+        update_centers(centers, new_clusters)
+        # ensure minimum number of iterations
+        if new_clusters == clusters and i > 5:
+            # TODO: return centers too?
+            return new_clusters
+        clusters = new_clusters
+        i += 1
 
-# TODO use pattern easier for testing
 def set_initial_centers(points, k):
     # pick random centers
     return random.sample(points, k)
@@ -58,9 +64,9 @@ def update_centers(centers, clusters):
     new_centers = []
     for (i, center) in enumerate(centers):
         cluster = clusters[i]
-        new_centers.append(update_center(center, cluster))
+        new_centers.append(update_center(cluster))
 
-def update_center(center, cluster):
+def update_center(cluster):
     # compute the WCSS
     centroid_sum_x = 0
     centroid_sum_y = 0
